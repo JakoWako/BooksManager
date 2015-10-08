@@ -22,7 +22,6 @@ public class DisplayBooksActivity extends AppCompatActivity {
 
         ListView booksList = (ListView) findViewById(R.id.bookslist);
 
-
         Intent intent = getIntent();
         List<Book> booksToDisplay;
         if (intent.getStringExtra("EXTRA_MESSAGE").equals("filter")){
