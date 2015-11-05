@@ -28,7 +28,7 @@ public class DisplayBooksActivity extends AppCompatActivity {
             DisplayFiltersActivity  displayFilters = new DisplayFiltersActivity();
             booksToDisplay = displayFilters.getFilteredBooksList();
         }else{
-            BookLibrary bookLibrary = new BookLibrary();
+            BookLibrary bookLibrary = new BookLibrary(this);
             booksToDisplay = bookLibrary.getBooksList();
         }
 

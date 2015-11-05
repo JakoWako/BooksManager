@@ -1,5 +1,6 @@
 package com.example.raingeval.booksmanager;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
@@ -10,12 +11,22 @@ import java.util.List;
  */
 public class BookLibrary {
     private static  List<Book> booksList = new ArrayList<>();
+    private BooksDataSource booksDataSource;
 
-    public BookLibrary() {
+    public BookLibrary(Context context) {
+        this.booksDataSource = new BooksDataSource(context);
     }
 
     public void addBook(Book book) {
-        this.booksList.add(book);
+
+        try{
+            this.booksDataSource.open();
+        }catch(java.sql.SQLException e){
+
+        };
+        this.booksDataSource.insertBook(book);
+        this.booksDataSource.close();
+        //this.booksList.add(book);
     }
 
     public void deleteBook(Book book) {
@@ -34,6 +45,13 @@ public class BookLibrary {
 
     public List<Book> getBooksList() {
 
-        return booksList;
+        try{
+            this.booksDataSource.open();
+        }catch(java.sql.SQLException e){
+
+        };
+        List<Book> books = this.booksDataSource.getAllBooks();
+        this.booksDataSource.close();
+        return books;
     }
 }

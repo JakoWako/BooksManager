@@ -1,5 +1,6 @@
 package com.example.raingeval.booksmanager;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ public class DisplayFiltersActivity extends AppCompatActivity {
 
         SimpleAdapter listAdapter = new SimpleAdapter(this.getBaseContext(), listOfFilters, R.layout.filter_detail, new String[] {"author","category"}, new int[] {R.id.author_filter, R.id.category_filter});
         filtersList.setAdapter(listAdapter);
+        final Context context = this; //binding du contexte
         filtersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -50,7 +52,7 @@ public class DisplayFiltersActivity extends AppCompatActivity {
                 String category = (String) item.get("category");
                 category = category.replace("Category : ","");
                 BookFilter filter = new BookFilter(author,category);
-                BookLibrary library = new BookLibrary();
+                BookLibrary library = new BookLibrary(context);
                 for (Book b : library.getBooksList()){
                     if (filter.isSelected(b)){
                         filteredBooks.add(b);

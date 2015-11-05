@@ -11,9 +11,10 @@ import android.util.Log;
 public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_BOOKS = "books";
-    public static final String COLUMN_ISBN = "_isbn";
-    public static final String COLUMN_AUTHOR = "author";
+    public static final String COLUMN_ID = "_id";
+    public static final String COLUMN_ISBN = "isbn";
     public static final String COLUMN_TITLE = "title";
+    public static final String COLUMN_AUTHOR = "author";
     public static final String COLUMN_CATEGORY = "category";
 
     private static final String DATABASE_NAME = "books.db";
@@ -21,9 +22,10 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
     // commande SQL pour création de la base
     private static final String DATABASE_CREATE = "create table "
-            + TABLE_BOOKS + "(" + COLUMN_ISBN
-            + " integer primary key autoincrement, " + COLUMN_AUTHOR
-            + " text not null, " + COLUMN_TITLE
+            + TABLE_BOOKS + "(" + COLUMN_ID
+            + " integer primary key autoincrement, " + COLUMN_ISBN
+            + " text not null, " +COLUMN_TITLE
+            + " text not null, " + COLUMN_AUTHOR
             + " text not null, " + COLUMN_CATEGORY + ");";
 
     public MySQLiteOpenHelper(Context context) {
