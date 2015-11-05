@@ -42,7 +42,7 @@ public class BooksDataSource {
         return database.insert(MySQLiteOpenHelper.TABLE_BOOKS, null, values);
     }
 
-    public int updateBook(int id, Book book){
+    public long updateBook(int id, Book book){
         ContentValues values = new ContentValues();
         values.put(MySQLiteOpenHelper.COLUMN_ISBN, book.getIsbn());
         values.put(MySQLiteOpenHelper.COLUMN_TITLE, book.getAuthor());
@@ -78,12 +78,6 @@ public class BooksDataSource {
         book.setTitle(cursor.getString(2));
         book.setAuthor(cursor.getString(3));
         book.setCategory(cursor.getString(4));
-
-        System.out.println(cursor.getString(0));
-        System.out.println(cursor.getString(1));
-        System.out.println(cursor.getString(2));
-        System.out.println(cursor.getString(3));
-        System.out.println(cursor.getString(4));
         return book;
     }
 }

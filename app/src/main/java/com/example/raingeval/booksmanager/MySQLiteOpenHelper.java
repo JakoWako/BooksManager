@@ -11,6 +11,7 @@ import android.util.Log;
 public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_BOOKS = "books";
+    public static final String TABLE_FILTERS = "filters";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_ISBN = "isbn";
     public static final String COLUMN_TITLE = "title";
@@ -28,6 +29,10 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
             + " text not null, " + COLUMN_AUTHOR
             + " text not null, " + COLUMN_CATEGORY + ");";
 
+    private static final String TABLE_CREATE = "create table "
+            + TABLE_FILTERS + "(" + COLUMN_ID
+            + " integer primary key autoincrement, " + COLUMN_AUTHOR + ", " + COLUMN_CATEGORY + ");";
+
     public MySQLiteOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -35,6 +40,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database){
         database.execSQL(DATABASE_CREATE);
+        database.execSQL(TABLE_CREATE);
     }
 
     @Override
@@ -42,6 +48,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
         Log.w(MySQLiteOpenHelper.class.getName(),
                 "Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BOOKS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FILTERS);
         onCreate(db);
     }
 

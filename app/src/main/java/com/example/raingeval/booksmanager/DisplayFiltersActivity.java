@@ -29,7 +29,7 @@ public class DisplayFiltersActivity extends AppCompatActivity {
 
         ListView filtersList = (ListView) findViewById(R.id.filterslist);
 
-        BookFilterCatalog bookFilterCatalog = new BookFilterCatalog();
+        BookFilterCatalog bookFilterCatalog = new BookFilterCatalog(this);
 
         List<Map<String, String>> listOfFilters = new ArrayList<Map<String, String>>();
         for (BookFilter filter : bookFilterCatalog.getBookFiltersList()) {

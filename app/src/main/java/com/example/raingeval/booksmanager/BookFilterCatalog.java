@@ -1,5 +1,7 @@
 package com.example.raingeval.booksmanager;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,13 +10,23 @@ import java.util.List;
  */
 public class BookFilterCatalog {
     private static List<BookFilter> bookFiltersList = new ArrayList<>();
+    private FiltersDataSource filtersDataSource;
 
-    public BookFilterCatalog(){
-
+    public BookFilterCatalog(Context context){
+        this.filtersDataSource = new FiltersDataSource(context);
     }
 
     public void addBookFilter(BookFilter bookFilter) {
-        this.bookFiltersList.add(bookFilter);
+
+        try{
+            this.filtersDataSource.open();
+        }catch(java.sql.SQLException e){
+
+        };
+        this.filtersDataSource.insertFilter(bookFilter);
+        this.filtersDataSource.close();
+
+        //this.bookFiltersList.add(bookFilter);
     }
 
     public void deleteBookFilter(BookFilter bookFilter) {
@@ -33,6 +45,13 @@ public class BookFilterCatalog {
 
     public List<BookFilter> getBookFiltersList() {
 
-        return bookFiltersList;
+        try{
+            this.filtersDataSource.open();
+        }catch(java.sql.SQLException e){
+
+        };
+        List<BookFilter> filters = this.filtersDataSource.getAllFilters();
+        this.filtersDataSource.close();
+        return filters;
     }
 }

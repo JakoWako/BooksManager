@@ -21,11 +21,11 @@ public class Home extends ActionBarActivity {
         bookLibrary.addBook(b2);
         bookLibrary.addBook(b3);
         bookLibrary.addBook(b4);*/
-        BookFilterCatalog filterCatalog = new BookFilterCatalog();
+        /*BookFilterCatalog filterCatalog = new BookFilterCatalog();
         BookFilter f1 = new BookFilter("Jiji","");
         BookFilter f2 = new BookFilter("","Aventure");
         filterCatalog.addBookFilter(f1);
-        filterCatalog.addBookFilter(f2);
+        filterCatalog.addBookFilter(f2);*/
     }
 
     public void goToAddBookActivity(View view) {

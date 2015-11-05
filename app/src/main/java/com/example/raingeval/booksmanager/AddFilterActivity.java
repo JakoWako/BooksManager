@@ -23,7 +23,7 @@ public class AddFilterActivity extends AppCompatActivity {
         String categoryFilter = editCategoryFilter.getText().toString();
         
 
-        BookFilterCatalog bookFilterCatalog = new BookFilterCatalog();
+        BookFilterCatalog bookFilterCatalog = new BookFilterCatalog(this);
         BookFilter filter = bookFilterCatalog.createBookFilter(authorFilter,categoryFilter);
         bookFilterCatalog.addBookFilter(filter);
     }
