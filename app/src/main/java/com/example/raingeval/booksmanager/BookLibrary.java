@@ -54,4 +54,15 @@ public class BookLibrary {
         this.booksDataSource.close();
         return books;
     }
+
+    public List<Book> getBooksFiltered(BookFilter filter){
+        try{
+            this.booksDataSource.open();
+        }catch(java.sql.SQLException e){
+
+        };
+        List<Book> books = this.booksDataSource.getBooksFiltered(filter);
+        this.booksDataSource.close();
+        return books;
+    }
 }

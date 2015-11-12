@@ -71,6 +71,23 @@ public class BooksDataSource {
         return books;
     }
 
+    public List<Book> getBooksFiltered(BookFilter filter){
+        List<Book> books = new ArrayList<Book>();
+        String whereClause = MySQLiteOpenHelper.COLUMN_AUTHOR + " =? OR " + MySQLiteOpenHelper.COLUMN_CATEGORY + " =?";
+        String[] whereArgs = new String[]{filter.getAuthorFilter(), filter.getCategoryFilter()};
+        Cursor cursor = database.query(MySQLiteOpenHelper.TABLE_BOOKS,
+                allColumns, whereClause, whereArgs, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Book book = cursorToBook(cursor);
+            books.add(book);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return books;
+    }
+
     private Book cursorToBook(Cursor cursor) {
         Book book = new Book();
         //book.setId(cursor.getLong(0));

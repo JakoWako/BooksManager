@@ -53,11 +53,12 @@ public class DisplayFiltersActivity extends AppCompatActivity {
                 category = category.replace("Category : ","");
                 BookFilter filter = new BookFilter(author,category);
                 BookLibrary library = new BookLibrary(context);
-                for (Book b : library.getBooksList()){
+                filteredBooks = library.getBooksFiltered(filter);
+                /*for (Book b : library.getBooksList()){
                     if (filter.isSelected(b)){
                         filteredBooks.add(b);
                     }
-                }
+                }*/
                 goToDisplayBooksActivity(view);
             }
         });
