@@ -1,27 +1,24 @@
 <resources>
-    <string name="app_name">BooksManager</string>
+    <string name="app_name">Books Manager</string>
 
-    <string name="welcome">Welcome! Please choose an activity.</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_display_books">Collections of books</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="button_activity_display_books">Display collection of books</string>
-    <string name="button_activity_add_book">Add a book to the collection</string>
-    <string name="title_activity_add_book">AddBookActivity</string>
-    <string name="author">Author</string>
-    <string name="title">Title</string>
-    <string name="isbn">ISBN</string>
-    <string name="category">Category</string>
-    <string name="button_add">Add book</string>
-    <string name="title_activity_filter">FilterActivity</string>
-    <string name="display_all_books">Display all the books</string>
-    <string name="create_filter">Create new filter</string>
-    <string name="title_activity_add_filter">AddFilterActivity</string>
-    <string name="author_filter">Filter by author</string>
-    <string name="category_filter">Filter by category</string>
-    <string name="button_add_filter">Add filter</string>
-    <string name="title_activity_display_filters">DisplayFiltersActivity</string>
-    <string name="button_activity_display_filters">Display the filters</string>
+    <string name="title_activity_display_books">Your collection</string>
+    <string name="button_activity_display_books">Your collection</string>
+    <string name="button_activity_add_book">Add a book</string>
+    <string name="title_activity_add_book">Your book</string>
+    <string name="author">AUTHOR : </string>
+    <string name="title">TITLE : </string>
+    <string name="isbn">ISBN : </string>
+    <string name="category">CATEGORY : </string>
+    <string name="button_add">Add this book</string>
+    <string name="title_activity_filter">Your filter</string>
+    <string name="display_all_books">Your collection</string>
+    <string name="create_filter">Create a filter</string>
+    <string name="title_activity_add_filter">Create a filter</string>
+    <string name="author_filter">BY AUTHOR : </string>
+    <string name="category_filter">BY CATEGORY : </string>
+    <string name="button_add_filter">Add this filter</string>
+    <string name="title_activity_display_filters">Filters</string>
+    <string name="button_activity_display_filters">Filters</string>
 
 </resources>

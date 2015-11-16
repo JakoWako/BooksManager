@@ -18,13 +18,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/author">
+                android:text="@string/author"
+                android:textColor="#fefefe">
             </TextView>
             <EditText
                 android:id="@+id/edit_author"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
+                android:layout_width="wrap_content"
+                android:textColor="#eaeaea"/>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,13 +36,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/title">
+                android:text="@string/title"
+                android:textColor="#fefefe">
             </TextView>
             <EditText
                 android:id="@+id/edit_title"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
-
+                android:layout_width="wrap_content"
+                android:textColor="#eaeaea"/>
         </LinearLayout>
 
         <LinearLayout
@@ -49,13 +53,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/isbn">
+                android:text="@string/isbn"
+                android:textColor="#fefefe">
             </TextView>
             <EditText
                 android:id="@+id/edit_isbn"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
-
+                android:layout_width="wrap_content"
+                android:textColor="#eaeaea"/>
         </LinearLayout>
 
         <LinearLayout
@@ -65,27 +70,29 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/category">
-            </TextView>
+                android:text="@string/category"
+                android:textColor="#fefefe">
+        </TextView>
             <EditText
                 android:id="@+id/edit_category"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
+                android:layout_width="wrap_content"
+                android:textColor="#eaeaea"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/button_add"
+                android:onClick="addBook"
+                android:layout_marginTop="25dp"
+                android:background="#d2b025" />
 
         </LinearLayout>
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/button_add"
-            android:onClick="addBook"/>
-
-    </RelativeLayout>
-
 </RelativeLayout>

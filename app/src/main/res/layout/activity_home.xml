@@ -12,23 +12,20 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:text="@string/welcome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/button_activity_add_book"
-            android:onClick="goToAddBookActivity" />
+            android:onClick="goToAddBookActivity"
+            android:background="#2e8d1f"
+            android:layout_marginBottom="25dp" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/button_activity_display_books"
-            android:onClick="goToFilterActivity" />
+            android:onClick="goToFilterActivity"
+            android:background="#d2b025" />
 
     </LinearLayout>
 

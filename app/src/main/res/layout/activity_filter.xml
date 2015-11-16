@@ -12,22 +12,28 @@
         android:orientation="vertical">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/display_all_books"
-            android:onClick="goToDisplayBooksActivity" />
+            android:onClick="goToDisplayBooksActivity"
+            android:background="#d2b025"
+            android:layout_marginBottom="25dp" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/create_filter"
-            android:onClick="goToAddFilterActivity" />
+            android:onClick="goToAddFilterActivity"
+            android:background="#3d9fea"
+            android:layout_marginBottom="10dp" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/button_activity_display_filters"
-            android:onClick="goToDisplayFiltersActivity" />
+            android:textColor="#ffffff"
+            android:onClick="goToDisplayFiltersActivity"
+            android:background="#011b64" />
 
 
     </LinearLayout>

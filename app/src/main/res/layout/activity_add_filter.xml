@@ -18,12 +18,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/author_filter">
+                android:text="@string/author_filter"
+                android:textColor="#fefefe">
             </TextView>
             <EditText
                 android:id="@+id/edit_author_filter"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
+                android:layout_width="wrap_content"
+                android:textColor="#eaeaea"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -33,28 +35,32 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/category_filter">
+                android:text="@string/category_filter"
+                android:textColor="#fefefe">
             </TextView>
             <EditText
                 android:id="@+id/edit_category_filter"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"/>
+                android:layout_width="wrap_content"
+                android:textColor="#eaeaea"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/button_add_filter"
+                android:onClick="addFilter"
+                android:layout_marginTop="25dp"
+                android:background="#3d9fea" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/button_add_filter"
-            android:onClick="addFilter"/>
-
-    </RelativeLayout>
 
 </RelativeLayout>
