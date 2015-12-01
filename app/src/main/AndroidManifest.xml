@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.raingeval.booksmanager" >
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
 
     <application
         android:allowBackup="true"
@@ -27,7 +29,7 @@
         <activity
             android:name=".AddBookActivity"
             android:label="@string/title_activity_add_book"
-            android:parentActivityName=".Home" >
+            android:parentActivityName=".AddBookChoiceActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.raingeval.booksmanager.Home" />
@@ -55,6 +57,23 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.raingeval.booksmanager.FilterActivity" />
+        </activity>
+        <activity
+            android:name=".AddBookChoiceActivity"
+            android:label="@string/title_activity_add_book_choice"
+            android:parentActivityName=".Home" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.raingeval.booksmanager.Home" />
+        </activity>
+        <activity
+            android:name=".ScanActivity"
+            android:label="@string/title_activity_scan"
+            android:parentActivityName=".AddBookChoiceActivity" >
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.raingeval.booksmanager.AddBookChoiceActivity" />
         </activity>
     </application>
 
