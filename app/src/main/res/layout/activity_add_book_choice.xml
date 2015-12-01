@@ -3,9 +3,8 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Home">
-
-
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.raingeval.booksmanager.AddBookChoiceActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +12,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:text="@string/welcome"
+            android:text="@string/add_book_choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
@@ -21,14 +20,14 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_activity_add_book"
-            android:onClick="goToAddBookChoiceActivity" />
+            android:text="@string/button_activity_add_book_form"
+            android:onClick="goToAddBookActivity" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_activity_display_books"
-            android:onClick="goToFilterActivity" />
+            android:text="@string/button_activity_add_book_scan"
+            android:onClick="goToScanActivity" />
 
     </LinearLayout>
 
