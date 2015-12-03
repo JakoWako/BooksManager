@@ -25,9 +25,8 @@ public class AddBookActivity extends AppCompatActivity {
 
         EditText editCategory = (EditText) findViewById(R.id.edit_category);
         String category = editCategory.getText().toString();
-
         BookLibrary bookLibrary = new BookLibrary(this);
-        Book b = bookLibrary.createBook(author, title, isbn, category);
+        Book b = bookLibrary.createBook(author, title, isbn, category, null);
         bookLibrary.addBook(b);
     }
 

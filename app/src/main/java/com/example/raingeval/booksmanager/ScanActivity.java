@@ -3,6 +3,7 @@ package com.example.raingeval.booksmanager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,6 +34,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -52,7 +55,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button scanBtn, addBtn;
     private TextView authorText, titleText, descriptionText, dateText, ratingCountText;
-    private String author, title, category, isbn;
+    private String author, title, category, isbn, imagePath;
     private LinearLayout starLayout;
     private ImageView thumbView;
     private ImageView[] starViews;
@@ -92,6 +95,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
             title = savedInstanceState.getString("title");
             isbn = savedInstanceState.getString("isbn");
             category = savedInstanceState.getString("category");
+            imagePath = savedInstanceState.getString("imagePath");
             descriptionText.setText(savedInstanceState.getString("description"));
             dateText.setText(savedInstanceState.getString("date"));
             ratingCountText.setText(savedInstanceState.getString("ratings"));
@@ -156,6 +160,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
         savedBundle.putString("author", ""+author);
         savedBundle.putString("isbn", ""+isbn);
         savedBundle.putString("category", ""+category);
+        savedBundle.putString("imagePath", ""+imagePath);
         savedBundle.putString("description", ""+descriptionText.getText());
         savedBundle.putString("date", "" + dateText.getText());
         savedBundle.putString("ratings", "" + ratingCountText.getText());
@@ -173,7 +178,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
         System.out.println(title);
         System.out.println(isbn);
         System.out.println(category);
-        Book b = bookLibrary.createBook(author, title, isbn, category);
+        Book b = bookLibrary.createBook(author, title, isbn, category, imagePath);
         bookLibrary.addBook(b);
     }
 
@@ -225,6 +230,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
             }
             catch(JSONException jse){
                 authorText.setText("");
+                author = "";
                 jse.printStackTrace();
             }
             try {
@@ -261,10 +267,11 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
             }
             try{
                 JSONObject imageInfo = volumeObject.getJSONObject("imageLinks");
-                new GetBookThumb().execute(imageInfo.getString("smallThumbnail"));
+                new GetBookThumb().execute(imageInfo.getString("thumbnail"));
             }
             catch(JSONException jse){
                 thumbView.setImageBitmap(null);
+                imagePath ="";
                 jse.printStackTrace();
             }
             try{
@@ -461,6 +468,22 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
                 BufferedInputStream thumbBuff = new BufferedInputStream(thumbIn);
                 thumbImg = BitmapFactory.decodeStream(thumbBuff);
                 thumbBuff.close();
+                thumbIn.close();
+                thumbConn = thumbURL.openConnection();
+                thumbConn.connect();
+                thumbIn = thumbConn.getInputStream();
+                File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+                File outputFile = new File(storageDir, title+".bmp");
+                FileOutputStream f = new FileOutputStream(outputFile);
+                byte[] buffer = new byte[2048];
+                int i;
+                while ((i = thumbIn.read(buffer)) > 0) {
+                    f.write(buffer, 0, i);
+                }
+                f.close();
+                imagePath = outputFile.getAbsolutePath();
+
+                //thumbBuff.close();
                 thumbIn.close();
             }
             catch(Exception e) {

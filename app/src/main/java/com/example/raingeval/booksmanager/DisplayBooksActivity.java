@@ -1,6 +1,8 @@
 package com.example.raingeval.booksmanager;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -36,7 +38,9 @@ public class DisplayBooksActivity extends AppCompatActivity {
         List<Map<String, String>> listOfBooks = new ArrayList<Map<String, String>>();
         for (Book book : booksToDisplay) {
             Map<String, String> bookMap = new HashMap<String, String>();
-            bookMap.put("img", String.valueOf(R.drawable.mouches));
+            System.out.println("cover path : " + book.getCoverPath());
+            Bitmap image = BitmapFactory.decodeFile(book.getCoverPath());
+            bookMap.put("img", String.valueOf(image));
             bookMap.put("author", book.getAuthor());
             bookMap.put("title", book.getTitle());
             bookMap.put("isbn", book.getIsbn());

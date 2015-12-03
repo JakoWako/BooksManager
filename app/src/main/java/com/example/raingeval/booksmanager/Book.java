@@ -11,24 +11,24 @@ public class Book {
     private String title;
     private String isbn;
     private String category;
-    private Drawable cover;
+
+
+    private String coverPath;
 
     public Book() {
         this.author = "";
         this.title = "";
         this.isbn = "";
         this.category = "";
-        /*Resources res = getResources();
-        this.cover = res.getDrawable(R.drawable.mouches.jpg);*/
-        this.cover = null;
+        this.coverPath = "";
     }
 
-    public Book(String author, String title, String isbn, String category) {
+    public Book(String author, String title, String isbn, String category, String coverPath) {
         this.author = author;
         this.title = title;
         this.isbn = isbn;
         this.category = category;
-        this.cover = null;
+        this.coverPath = coverPath;
     }
 
     public String getAuthor() {
@@ -69,12 +69,11 @@ public class Book {
         this.category = category;
     }
 
-
-    /*public String getCover() {
-        return cover;
+    public String getCoverPath() {
+        return coverPath;
     }
 
-    public void setCover(String cover) {
-        this.cover = cover;
-    }*/
+    public void setCoverPath(String coverPath) {
+        this.coverPath = coverPath;
+    }
 }

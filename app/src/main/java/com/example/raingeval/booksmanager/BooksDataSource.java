@@ -19,7 +19,7 @@ public class BooksDataSource {
     private SQLiteOpenHelper dbHelper;
     private String[] allColumns = { MySQLiteOpenHelper.COLUMN_ID,
             MySQLiteOpenHelper.COLUMN_ISBN, MySQLiteOpenHelper.COLUMN_TITLE,
-            MySQLiteOpenHelper.COLUMN_AUTHOR, MySQLiteOpenHelper.COLUMN_CATEGORY };
+            MySQLiteOpenHelper.COLUMN_AUTHOR, MySQLiteOpenHelper.COLUMN_CATEGORY, MySQLiteOpenHelper.COLUMN_COVERPATH };
 
     public BooksDataSource(Context context){
         dbHelper = new MySQLiteOpenHelper(context);
@@ -39,6 +39,7 @@ public class BooksDataSource {
         values.put(MySQLiteOpenHelper.COLUMN_TITLE, book.getTitle());
         values.put(MySQLiteOpenHelper.COLUMN_AUTHOR, book.getAuthor());
         values.put(MySQLiteOpenHelper.COLUMN_CATEGORY, book.getCategory());
+        values.put(MySQLiteOpenHelper.COLUMN_COVERPATH, book.getCoverPath());
         return database.insert(MySQLiteOpenHelper.TABLE_BOOKS, null, values);
     }
 
@@ -48,6 +49,7 @@ public class BooksDataSource {
         values.put(MySQLiteOpenHelper.COLUMN_TITLE, book.getAuthor());
         values.put(MySQLiteOpenHelper.COLUMN_AUTHOR, book.getCategory());
         values.put(MySQLiteOpenHelper.COLUMN_CATEGORY, book.getTitle());
+        values.put(MySQLiteOpenHelper.COLUMN_COVERPATH, book.getCoverPath());
         return database.update(MySQLiteOpenHelper.TABLE_BOOKS, values, MySQLiteOpenHelper.COLUMN_ID + " = " + id, null);
     }
 
@@ -95,6 +97,7 @@ public class BooksDataSource {
         book.setTitle(cursor.getString(2));
         book.setAuthor(cursor.getString(3));
         book.setCategory(cursor.getString(4));
+        book.setCoverPath(cursor.getString(5));
         return book;
     }
 }

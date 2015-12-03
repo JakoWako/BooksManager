@@ -17,6 +17,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
     public static final String COLUMN_TITLE = "title";
     public static final String COLUMN_AUTHOR = "author";
     public static final String COLUMN_CATEGORY = "category";
+    public static final String COLUMN_COVERPATH = "coverPath";
 
     private static final String DATABASE_NAME = "books.db";
     private static final int DATABASE_VERSION = 1;
@@ -25,9 +26,10 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
     private static final String DATABASE_CREATE = "create table "
             + TABLE_BOOKS + "(" + COLUMN_ID
             + " integer primary key autoincrement, " + COLUMN_ISBN
-            + " text not null, " +COLUMN_TITLE
+            + " text not null, " + COLUMN_TITLE
             + " text not null, " + COLUMN_AUTHOR
-            + " text not null, " + COLUMN_CATEGORY + ");";
+            + " text not null, " + COLUMN_CATEGORY
+            + ", " + COLUMN_COVERPATH + ");";
 
     private static final String TABLE_CREATE = "create table "
             + TABLE_FILTERS + "(" + COLUMN_ID

@@ -1,8 +1,21 @@
 package com.example.raingeval.booksmanager;
 
 import android.content.Context;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Environment;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 //autre tst de branche
@@ -38,8 +51,10 @@ public class BookLibrary {
         return book;
     }
 
-    public Book createBook(String author, String title, String isbn, String category){
-        Book book = new Book(author, title, isbn, category);
+    public Book createBook(String author, String title, String isbn, String category, String imagePath){
+
+        System.out.println(imagePath);
+        Book book = new Book(author, title, isbn, category, imagePath);
         return book;
     }
 
