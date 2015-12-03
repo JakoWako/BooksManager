@@ -7,6 +7,7 @@
     tools:context="com.example.raingeval.booksmanager.DisplayBooksActivity">
 
 
+
     <ListView
         android:id="@+id/bookslist"
         android:layout_width="fill_parent"

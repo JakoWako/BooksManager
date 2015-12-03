@@ -472,6 +472,8 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
                 thumbConn = thumbURL.openConnection();
                 thumbConn.connect();
                 thumbIn = thumbConn.getInputStream();
+
+
                 File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
                 File outputFile = new File(storageDir, title+".bmp");
                 FileOutputStream f = new FileOutputStream(outputFile);
