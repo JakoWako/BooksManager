@@ -23,7 +23,6 @@ import java.util.List;
  * Created by raingeval on 24/09/15.
  */
 public class BookLibrary {
-    private static  List<Book> booksList = new ArrayList<>();
     private BooksDataSource booksDataSource;
 
     public BookLibrary(Context context) {
@@ -35,15 +34,20 @@ public class BookLibrary {
         try{
             this.booksDataSource.open();
         }catch(java.sql.SQLException e){
-
-        };
+            e.printStackTrace();
+        }
         this.booksDataSource.insertBook(book);
         this.booksDataSource.close();
-        //this.booksList.add(book);
     }
 
-    public void deleteBook(Book book) {
-        this.booksList.remove(book);
+    public void deleteBook(long id) {
+        try{
+            this.booksDataSource.open();
+        }catch(java.sql.SQLException e){
+            e.printStackTrace();
+        }
+        this.booksDataSource.removeBookWithID(id);
+        this.booksDataSource.close();
     }
 
     public Book createBook(){
@@ -51,10 +55,19 @@ public class BookLibrary {
         return book;
     }
 
-    public Book createBook(String author, String title, String isbn, String category, String imagePath){
+    public void editBook(Book book, long id){
+        try{
+            this.booksDataSource.open();
+        }catch(java.sql.SQLException e){
+            e.printStackTrace();
+        }
+        this.booksDataSource.updateBook(id, book);
+        this.booksDataSource.close();
+    }
 
-        System.out.println(imagePath);
-        Book book = new Book(author, title, isbn, category, imagePath);
+    public Book createBook(String author, String title, String isbn, String category, String publisher, String year, String imagePath, String description){
+
+        Book book = new Book(author, title, isbn, category, publisher, year, imagePath, description);
         return book;
     }
 
@@ -75,9 +88,20 @@ public class BookLibrary {
             this.booksDataSource.open();
         }catch(java.sql.SQLException e){
 
-        };
+        }
         List<Book> books = this.booksDataSource.getBooksFiltered(filter);
         this.booksDataSource.close();
         return books;
+    }
+
+    public Book getBookById(long id){
+        try{
+            this.booksDataSource.open();
+        }catch(java.sql.SQLException e){
+
+        }
+        Book book = this.booksDataSource.getBookByID(id);
+        this.booksDataSource.close();
+        return book;
     }
 }

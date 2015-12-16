@@ -55,7 +55,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button scanBtn, addBtn;
     private TextView authorText, titleText, descriptionText, dateText, ratingCountText;
-    private String author, title, category, isbn, imagePath;
+    private String author, title, isbn, category, publisher, year, imagePath, description;
     private LinearLayout starLayout;
     private ImageView thumbView;
     private ImageView[] starViews;
@@ -95,6 +95,8 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
             title = savedInstanceState.getString("title");
             isbn = savedInstanceState.getString("isbn");
             category = savedInstanceState.getString("category");
+            publisher = savedInstanceState.getString("publisher");
+            year = savedInstanceState.getString("year");
             imagePath = savedInstanceState.getString("imagePath");
             descriptionText.setText(savedInstanceState.getString("description"));
             dateText.setText(savedInstanceState.getString("date"));
@@ -132,6 +134,7 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
             String scanContent = scanningResult.getContents();
             String scanFormat = scanningResult.getFormatName();
             Log.v("SCAN", "content: " + scanContent + " - format: " + scanFormat);
+            this.isbn = scanContent;
             if(scanContent!=null && scanFormat!=null && scanFormat.equalsIgnoreCase("EAN_13")){
                 //book search
                 String bookSearchString = "https://www.googleapis.com/books/v1/volumes?"+
@@ -160,7 +163,9 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
         savedBundle.putString("author", ""+author);
         savedBundle.putString("isbn", ""+isbn);
         savedBundle.putString("category", ""+category);
-        savedBundle.putString("imagePath", ""+imagePath);
+        savedBundle.putString("publisher", ""+publisher);
+        savedBundle.putString("year", "" + year);
+        savedBundle.putString("imagePath", "" + imagePath);
         savedBundle.putString("description", ""+descriptionText.getText());
         savedBundle.putString("date", "" + dateText.getText());
         savedBundle.putString("ratings", "" + ratingCountText.getText());
@@ -178,8 +183,10 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
         System.out.println(title);
         System.out.println(isbn);
         System.out.println(category);
-        Book b = bookLibrary.createBook(author, title, isbn, category, imagePath);
+        Book b = bookLibrary.createBook(author, title, isbn, category, publisher, year, imagePath, description);
         bookLibrary.addBook(b);
+        Toast toast = Toast.makeText(this, R.string.book_added, Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     protected void getBookInfo(String bookURL){
@@ -234,14 +241,19 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
                 jse.printStackTrace();
             }
             try {
-                dateText.setText("PUBLISHED: "+volumeObject.getString("publishedDate")); }
+                dateText.setText("PUBLISHED: "+volumeObject.getString("publishedDate"));
+                year = volumeObject.getString("publishedDate");}
             catch(JSONException jse){
                 dateText.setText("");
+                year = "";
                 jse.printStackTrace();
             }
-            try{ descriptionText.setText("DESCRIPTION: "+volumeObject.getString("description")); }
+            try{
+                descriptionText.setText("DESCRIPTION: "+volumeObject.getString("description"));
+                description = volumeObject.getString("description");}
             catch(JSONException jse){
                 descriptionText.setText("");
+                description = "";
                 jse.printStackTrace();
             }
             try{
@@ -290,7 +302,13 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
                 System.out.println("isbn");
             }
             catch(JSONException jse){
-                isbn = "";
+                jse.printStackTrace();
+            }
+            try{
+                publisher = volumeObject.getString("publisher");
+            }
+            catch(JSONException jse){
+                publisher = "";
                 jse.printStackTrace();
             }
         }
@@ -309,147 +327,6 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    /*private class GetBookInfo extends AsyncTask<String, Void, String> {
-        //fetch book info
-
-        @Override
-        protected String doInBackground(String... bookURLs) {
-            //request book info
-
-            StringBuilder bookBuilder = new StringBuilder();
-
-            for (String bookSearchURL : bookURLs) {
-                //search urls
-                HttpClient bookClient = new DefaultHttpClient();
-                try {
-                    //get the data
-                    HttpGet bookGet = new HttpGet(bookSearchURL);
-                    HttpResponse bookResponse = bookClient.execute(bookGet);
-                    StatusLine bookSearchStatus = bookResponse.getStatusLine();
-                    if (bookSearchStatus.getStatusCode()==200) {
-                        //we have a result
-                        HttpEntity bookEntity = bookResponse.getEntity();
-                        InputStream bookContent = bookEntity.getContent();
-                        InputStreamReader bookInput = new InputStreamReader(bookContent);
-                        BufferedReader bookReader = new BufferedReader(bookInput);
-                        String lineIn;
-                        while ((lineIn=bookReader.readLine())!=null) {
-                            bookBuilder.append(lineIn);
-                        }
-                        return bookBuilder.toString();
-                    }
-                }
-                catch(Exception e){ e.printStackTrace(); }
-            }
-            return null;
-        }
-
-        protected void onPostExecute(String result) {
-            //parse search results
-            System.out.println(result);
-            try{
-                //parse results
-                addBtn.setVisibility(View.VISIBLE);
-                JSONObject resultObject = new JSONObject(result);
-                JSONArray bookArray = resultObject.getJSONArray("items");
-                JSONObject bookObject = bookArray.getJSONObject(0);
-                JSONObject volumeObject = bookObject.getJSONObject("volumeInfo");
-                try{
-                    titleText.setText("TITLE: "+volumeObject.getString("title"));
-                    title = volumeObject.getString("title"); }
-                catch(JSONException jse){
-                    titleText.setText("");
-                    title = "";
-                    jse.printStackTrace();
-                }
-                StringBuilder authorBuild = new StringBuilder("");
-                try{
-                    JSONArray authorArray = volumeObject.getJSONArray("authors");
-                    for(int a=0; a<authorArray.length(); a++){
-                        if(a>0) authorBuild.append(", ");
-                        authorBuild.append(authorArray.getString(a));
-                    }
-                    authorText.setText("AUTHOR(S): "+authorBuild.toString());
-                    author = authorArray.getString(0);
-                }
-                catch(JSONException jse){
-                    authorText.setText("");
-                    jse.printStackTrace();
-                }
-                try {
-                    dateText.setText("PUBLISHED: "+volumeObject.getString("publishedDate")); }
-                catch(JSONException jse){
-                    dateText.setText("");
-                    jse.printStackTrace();
-                }
-                try{ descriptionText.setText("DESCRIPTION: "+volumeObject.getString("description")); }
-                catch(JSONException jse){
-                    descriptionText.setText("");
-                    jse.printStackTrace();
-                }
-                try{
-                    //set stars
-                    double decNumStars = Double.parseDouble(volumeObject.getString("averageRating"));
-                    int numStars = (int)decNumStars;
-                    starLayout.setTag(numStars);
-                    starLayout.removeAllViews();
-                    for(int s=0; s<numStars; s++){
-                        starViews[s].setImageResource(R.drawable.mario_star);
-                        starLayout.addView(starViews[s]);
-                    }
-                }
-                catch(JSONException jse){
-                    starLayout.removeAllViews();
-                    jse.printStackTrace();
-                }
-                try {
-                    ratingCountText.setText(" - " + volumeObject.getString("ratingsCount") + " ratings"); }
-                catch(JSONException jse){
-                    ratingCountText.setText("");
-                    jse.printStackTrace();
-                }
-                try{
-                    JSONObject imageInfo = volumeObject.getJSONObject("imageLinks");
-                    new GetBookThumb().execute(imageInfo.getString("smallThumbnail"));
-                }
-                catch(JSONException jse){
-                    thumbView.setImageBitmap(null);
-                    jse.printStackTrace();
-                }
-                try{
-                    JSONArray categories = volumeObject.getJSONArray("categories");
-                    category = categories.getString(0);
-                    System.out.println(category);
-                }
-                catch(JSONException jse){
-                    category = "";
-                    jse.printStackTrace();
-                }
-                try{
-                    JSONArray idArray = volumeObject.getJSONArray("industryIdentifiers");
-                    JSONObject id = idArray.getJSONObject(0);
-                    isbn = id.getString("identifier");
-                    System.out.println("isbn");
-                }
-                catch(JSONException jse){
-                    isbn = "";
-                    jse.printStackTrace();
-                }
-            }
-            catch (Exception e) {
-                //no result
-                e.printStackTrace();
-                titleText.setText("NOT FOUND");
-                authorText.setText("");
-                descriptionText.setText("");
-                dateText.setText("");
-                starLayout.removeAllViews();
-                ratingCountText.setText("");
-                thumbView.setImageBitmap(null);
-                addBtn.setVisibility(View.GONE);
-            }
-        }
-    }*/
 
     private class GetBookThumb extends AsyncTask<String, Void, String> {
 
