@@ -2,6 +2,8 @@
     <string name="app_name">Books Manager</string>
 
     <string name="welcome">Welcome! Please choose an activity.</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <string name="add_book_choice">Please choose how to add your book.</string>
     <string name="button_activity_add_book_form">Add a book manually</string>
     <string name="button_activity_add_book_scan">Add a book by scanning</string>
@@ -17,6 +19,11 @@
     <string name="author">AUTHOR : </string>
     <string name="title">TITLE : </string>
     <string name="isbn">ISBN : </string>
+    <string name="publisher">PUBLISHER : </string>
+    <string name="year">YEAR : </string>
+    <string name="description">DESCRIPTION : </string>
+    <string name="button_edit">Edit</string>
+    <string name="button_delete">Delete</string>
     <string name="category">CATEGORY : </string>
     <string name="button_add">Add this book</string>
     <string name="title_activity_filter">Your filter</string>
@@ -28,5 +35,9 @@
     <string name="button_add_filter">Add this filter</string>
     <string name="title_activity_display_filters">Filters</string>
     <string name="button_activity_display_filters">Filters</string>
+    <string name="book_added">Book successfully added !</string>
+    <string name="title_activity_edit_book">EditBookActivity</string>
+    <string name="button_activity_edit_book">Edit your book</string>
+    <string name="book_edited">Book edited</string>
 
 </resources>

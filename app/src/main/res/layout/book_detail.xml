@@ -3,6 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <ImageView
         android:id="@+id/img"
         android:layout_width="150dp"
@@ -20,12 +21,20 @@
         android:layout_weight="1"
         >
 
+        <TextView android:id="@+id/id"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:textSize="16sp"
+            android:visibility="invisible"
+            />
+
         <TextView android:id="@+id/author"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:textSize="16sp"
             android:textStyle="bold"
             />
+
         <TextView android:id="@+id/title"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -38,6 +47,20 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             />
+        <Button
+            android:id="@+id/edit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/button_edit"
+            android:onClick="editBook"/>
+        <Button
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/button_delete"
+            android:onClick="deleteBook"/>
     </LinearLayout>
 
 

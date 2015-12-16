@@ -62,6 +62,7 @@ public class DisplayFiltersActivity extends AppCompatActivity {
                 goToDisplayBooksActivity(view);
             }
         });
+
     }
 
     public List<Book> getFilteredBooksList() {
