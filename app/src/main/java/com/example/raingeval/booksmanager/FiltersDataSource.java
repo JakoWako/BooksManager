@@ -18,7 +18,7 @@ public class FiltersDataSource {
     private SQLiteDatabase database;
     private SQLiteOpenHelper dbHelper;
     private String[] allColumns = { MySQLiteOpenHelper.COLUMN_ID,
-            MySQLiteOpenHelper.COLUMN_AUTHOR, MySQLiteOpenHelper.COLUMN_CATEGORY };
+            MySQLiteOpenHelper.COLUMN_AUTHOR, MySQLiteOpenHelper.COLUMN_CATEGORY, MySQLiteOpenHelper.COLUMN_PUBLISHER, MySQLiteOpenHelper.COLUMN_YEAR };
 
     public FiltersDataSource(Context context){
         dbHelper = new MySQLiteOpenHelper(context);
@@ -36,6 +36,8 @@ public class FiltersDataSource {
         ContentValues values = new ContentValues();
         values.put(MySQLiteOpenHelper.COLUMN_AUTHOR, filter.getAuthorFilter());
         values.put(MySQLiteOpenHelper.COLUMN_CATEGORY, filter.getCategoryFilter());
+        values.put(MySQLiteOpenHelper.COLUMN_PUBLISHER, filter.getPublisherFilter());
+        values.put(MySQLiteOpenHelper.COLUMN_YEAR, filter.getYearFilter());
         return database.insert(MySQLiteOpenHelper.TABLE_FILTERS, null, values);
     }
 
@@ -43,6 +45,8 @@ public class FiltersDataSource {
         ContentValues values = new ContentValues();
         values.put(MySQLiteOpenHelper.COLUMN_TITLE, filter.getAuthorFilter());
         values.put(MySQLiteOpenHelper.COLUMN_CATEGORY, filter.getCategoryFilter());
+        values.put(MySQLiteOpenHelper.COLUMN_PUBLISHER, filter.getPublisherFilter());
+        values.put(MySQLiteOpenHelper.COLUMN_YEAR, filter.getYearFilter());
         return database.update(MySQLiteOpenHelper.TABLE_FILTERS, values, MySQLiteOpenHelper.COLUMN_ID + " = " + id, null);
     }
 
@@ -71,6 +75,8 @@ public class FiltersDataSource {
         //book.setId(cursor.getLong(0));
         filter.setAuthorFilter(cursor.getString(1));
         filter.setCategoryFilter(cursor.getString(2));
+        filter.setPublisherFilter(cursor.getString(3));
+        filter.setYearFilter(cursor.getString(4));
         return filter;
     }
 }

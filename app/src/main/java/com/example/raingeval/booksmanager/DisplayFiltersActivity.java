@@ -35,11 +35,13 @@ public class DisplayFiltersActivity extends AppCompatActivity {
         for (BookFilter filter : bookFilterCatalog.getBookFiltersList()) {
             Map<String, String> filterMap = new HashMap<String, String>();
             filterMap.put("author", "Author : " + filter.getAuthorFilter());
+            filterMap.put("publisher", "Publisher : " + filter.getPublisherFilter());
             filterMap.put("category", "Category : " + filter.getCategoryFilter());
+            filterMap.put("year", "Year : " + filter.getYearFilter());
             listOfFilters.add(filterMap);
         }
 
-        SimpleAdapter listAdapter = new SimpleAdapter(this.getBaseContext(), listOfFilters, R.layout.filter_detail, new String[] {"author","category"}, new int[] {R.id.author_filter, R.id.category_filter});
+        SimpleAdapter listAdapter = new SimpleAdapter(this.getBaseContext(), listOfFilters, R.layout.filter_detail, new String[] {"author","category","publisher","year"}, new int[] {R.id.author_filter, R.id.category_filter, R.id.publisher_filter, R.id.year_filter});
         filtersList.setAdapter(listAdapter);
         final Context context = this; //binding du contexte
         filtersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -51,14 +53,18 @@ public class DisplayFiltersActivity extends AppCompatActivity {
                 author = author.replace("Author : ","");
                 String category = (String) item.get("category");
                 category = category.replace("Category : ","");
-                BookFilter filter = new BookFilter(author,category);
+                String publisher = (String) item.get("publisher");
+                publisher = publisher.replace("Publisher : ","");
+                String year = (String) item.get("year");
+                year = year.replace("Year : ","");
+                BookFilter filter = new BookFilter(author,category, publisher, year);
                 BookLibrary library = new BookLibrary(context);
-                filteredBooks = library.getBooksFiltered(filter);
-                /*for (Book b : library.getBooksList()){
+                //filteredBooks = library.getBooksFiltered(filter);
+                for (Book b : library.getBooksList()){
                     if (filter.isSelected(b)){
                         filteredBooks.add(b);
                     }
-                }*/
+                }
                 goToDisplayBooksActivity(view);
             }
         });

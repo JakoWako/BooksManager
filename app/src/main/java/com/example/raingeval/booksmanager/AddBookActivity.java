@@ -29,13 +29,13 @@ public class AddBookActivity extends AppCompatActivity {
         String category = editCategory.getText().toString();
 
         EditText editPublisher = (EditText) findViewById(R.id.add_publisher);
-        String publisher = editCategory.getText().toString();
+        String publisher = editPublisher.getText().toString();
 
         EditText editYear = (EditText) findViewById(R.id.add_year);
-        String year = editCategory.getText().toString();
+        String year = editYear.getText().toString();
 
         EditText editDescription = (EditText) findViewById(R.id.add_description);
-        String description = editCategory.getText().toString();
+        String description = editDescription.getText().toString();
 
         BookLibrary bookLibrary = new BookLibrary(this);
         Book b = bookLibrary.createBook(author, title, isbn, category, publisher, year, null, description);

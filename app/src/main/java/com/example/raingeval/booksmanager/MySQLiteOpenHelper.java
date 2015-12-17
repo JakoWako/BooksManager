@@ -39,7 +39,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_CREATE = "create table "
             + TABLE_FILTERS + "(" + COLUMN_ID
-            + " integer primary key autoincrement, " + COLUMN_AUTHOR + ", " + COLUMN_CATEGORY + ");";
+            + " integer primary key autoincrement, " + COLUMN_AUTHOR + ", " + COLUMN_CATEGORY + ", " + COLUMN_PUBLISHER + ", " + COLUMN_YEAR + ");";
 
     public MySQLiteOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

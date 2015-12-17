@@ -38,8 +38,8 @@ public class BookFilterCatalog {
         return bookFilter;
     }
 
-    public BookFilter createBookFilter(String authorFilter, String categoryFilter){
-        BookFilter bookFilter = new BookFilter(authorFilter, categoryFilter);
+    public BookFilter createBookFilter(String authorFilter, String categoryFilter, String publisherFilter, String yearFilter){
+        BookFilter bookFilter = new BookFilter(authorFilter, categoryFilter, publisherFilter, yearFilter);
         return bookFilter;
     }
 

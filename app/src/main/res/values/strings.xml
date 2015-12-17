@@ -32,10 +32,13 @@
     <string name="title_activity_add_filter">Create a filter</string>
     <string name="author_filter">BY AUTHOR : </string>
     <string name="category_filter">BY CATEGORY : </string>
+    <string name="publisher_filter">BY PUBLISHER : </string>
+    v<string name="year_filter">BY YEAR : </string>
     <string name="button_add_filter">Add this filter</string>
     <string name="title_activity_display_filters">Filters</string>
     <string name="button_activity_display_filters">Filters</string>
     <string name="book_added">Book successfully added !</string>
+    <string name="filter_added">Book successfully added !</string>
     <string name="title_activity_edit_book">Edit your book</string>
     <string name="button_activity_edit_book">Edit your book</string>
     <string name="book_edited">Book edited</string>
