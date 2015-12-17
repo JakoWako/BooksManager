@@ -16,21 +16,25 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:textColor="#fefefe"
+	    android:layout_marginBottom="5dp"
             />
         <TextView android:id="@+id/publisher_filter"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:textColor="#fefefe"
+            android:layout_marginBottom="5dp"
             />
         <TextView android:id="@+id/year_filter"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:textColor="#fefefe"
+            android:layout_marginBottom="5dp"
             />
         <TextView android:id="@+id/category_filter"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:textColor="#fefefe"
+            android:layout_marginBottom="10dp"
             />
     </LinearLayout>
 
