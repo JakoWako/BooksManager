@@ -1,14 +1,14 @@
 <resources>
-    <string name="app_name">Books Manager</string>
+    <string name="app_name">The Bookkeeper</string>
 
     <string name="welcome">Welcome! Please choose an activity.</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="add_book_choice">Please choose how to add your book.</string>
-    <string name="button_activity_add_book_form">Add a book manually</string>
-    <string name="button_activity_add_book_scan">Add a book by scanning</string>
-    <string name="title_activity_add_book_choice">AddBookChoiceActivity</string>
-    <string name="title_activity_scan">ScanActivity</string>
+    <string name="add_book_choice">ADD YOUR BOOK :</string>
+    <string name="button_activity_add_book_form">Manually</string>
+    <string name="button_activity_add_book_scan">By scanning</string>
+    <string name="title_activity_add_book_choice">Add your Book</string>
+    <string name="title_activity_scan">Scan your book</string>
     <string name="scan">Scan again</string>
     <string name="thumb">Book thumbnail</string>
     <string name="action_settings">Settings</string>
@@ -19,14 +19,14 @@
     <string name="author">AUTHOR : </string>
     <string name="title">TITLE : </string>
     <string name="isbn">ISBN : </string>
-    <string name="publisher">PUBLISHER : </string>
-    <string name="year">YEAR : </string>
-    <string name="description">DESCRIPTION : </string>
     <string name="button_edit">Edit</string>
     <string name="button_delete">Delete</string>
     <string name="category">CATEGORY : </string>
+    <string name="publisher">PUBLISHER : </string>
+    <string name="year">YEAR : </string>
+    <string name="description">DESCRIPTION : </string>
     <string name="button_add">Add this book</string>
-    <string name="title_activity_filter">Your filter</string>
+    <string name="title_activity_filter">Your Collection</string>
     <string name="display_all_books">Your collection</string>
     <string name="create_filter">Create a filter</string>
     <string name="title_activity_add_filter">Create a filter</string>
@@ -36,8 +36,11 @@
     <string name="title_activity_display_filters">Filters</string>
     <string name="button_activity_display_filters">Filters</string>
     <string name="book_added">Book successfully added !</string>
-    <string name="title_activity_edit_book">EditBookActivity</string>
+    <string name="title_activity_edit_book">Edit your book</string>
     <string name="button_activity_edit_book">Edit your book</string>
     <string name="book_edited">Book edited</string>
+    <string name="title_activity_detail">DetailActivity</string>
+
+    <string name="hello_world">Hello world!</string>
 
 </resources>

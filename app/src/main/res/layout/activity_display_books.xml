@@ -11,6 +11,7 @@
     <ListView
         android:id="@+id/bookslist"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="fill_parent"
+        android:textColor="#fefefe" />
 
 </RelativeLayout>

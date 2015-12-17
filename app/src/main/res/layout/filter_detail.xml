@@ -15,10 +15,12 @@
         <TextView android:id="@+id/author_filter"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:textColor="#fefefe"
             />
         <TextView android:id="@+id/category_filter"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:textColor="#fefefe"
             />
     </LinearLayout>
 

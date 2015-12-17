@@ -11,23 +11,35 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:text="@string/add_book_choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/add_book_manually"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/button_activity_add_book_form"
+                android:onClick="goToAddBookActivity"
+                android:background="#d2b025" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_activity_add_book_form"
-            android:onClick="goToAddBookActivity" />
+                android:id="@+id/add_book_scanning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/button_activity_add_book_scan"
+                android:onClick="goToScanActivity"
+                android:layout_marginTop="25dp"
+                android:background="#FE8801" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_activity_add_book_scan"
-            android:onClick="goToScanActivity" />
+        </LinearLayout>
 
     </LinearLayout>
 
